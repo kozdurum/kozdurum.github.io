@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meşhur Közdürüm | Menü</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6ecdc;
+    --bg-card:#fffaf0;
+    --bg-card-2:#f0e2c8;
+    --ember:#c1432c;
+    --glow:#c97a1e;
+    --cream:#2b1810;
+    --muted:#8a6f56;
+    --line:#dfc9a6;
+    --soldout:#8a6f56;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Karla', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body{
+    background-image:
+      radial-gradient(ellipse 600px 300px at 20% 0%, rgba(193,67,44,0.08), transparent 60%),
+      radial-gradient(ellipse 500px 260px at 90% 10%, rgba(201,122,30,0.07), transparent 60%);
+    padding-bottom:60px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:52px 24px 34px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:50%; top:-40px;
+    width:420px; height:220px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(193,67,44,0.22), rgba(193,67,44,0) 70%);
+    filter:blur(4px);
+    animation:emberPulse 4.5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes emberPulse{
+    0%,100%{opacity:.55; transform:translateX(-50%) scale(1);}
+    50%{opacity:1; transform:translateX(-50%) scale(1.08);}
+  }
+  .hero .chef{
+    font-size:26px;
+    margin-bottom:6px;
+    opacity:.85;
+  }
+  .hero h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    letter-spacing:1px;
+    font-size:clamp(34px, 9vw, 54px);
+    line-text:1;
+    color:var(--cream);
+    text-shadow: 0 2px 0 rgba(193,67,44,0.12);
+  }
+  .hero h1 span{
+    color:var(--ember);
+  }
+  .hero .tagline{
+    margin-top:10px;
+    font-style:italic;
+    color:var(--muted);
+    font-size:15px;
+    letter-spacing:.3px;
+  }
+  .hero .rule{
+    width:56px; height:3px;
+    background:linear-gradient(90deg, var(--ember), var(--glow));
+    margin:18px auto 0;
+    border-radius:2px;
+  }
+
+  /* ---------- STICKY NAV ---------- */
+  .catnav{
+    position:sticky;
+    top:0; z-index:10;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:12px 16px;
+    background:rgba(246,236,220,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    scrollbar-width:none;
+  }
+  .catnav::-webkit-scrollbar{display:none;}
+  .catnav a{
+    flex:0 0 auto;
+    font-family:'Oswald', sans-serif;
+    font-size:13px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-decoration:none;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .catnav a:active, .catnav a:focus-visible{
+    color:var(--bg);
+    background:var(--ember);
+    border-color:var(--ember);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  .menu{
+    max-width:640px;
+    margin:0 auto;
+    padding:8px 18px 0;
+  }
+  .section{
+    padding-top:38px;
+    scroll-margin-top:64px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .section-head .num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--ember);
+    font-size:13px;
+  }
+  .section-head h2{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-size:22px;
+    color:var(--cream);
+  }
+  .section-sub{
+    color:var(--muted);
+    font-size:12.5px;
+    margin-bottom:18px;
+    font-style:italic;
+  }
+
+  .item{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    padding:13px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .item:last-child{border-bottom:none;}
+  .item-name{
+    font-size:16px;
+    font-weight:500;
+    color:var(--cream);
+  }
+  .item-name .desc{
+    display:block;
+    font-family:'Karla', sans-serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .leader{
+    flex:1;
+    height:0;
+    border-bottom:2px dotted var(--ember);
+    opacity:.35;
+    margin-bottom:5px;
+    position:relative;
+  }
+  .item.soldout .leader{
+    border-bottom:2px dotted var(--soldout);
+    opacity:.25;
+  }
+  .price{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:15px;
+    color:var(--glow);
+    white-space:nowrap;
+  }
+  .price::after{
+    content:" ₺";
+    font-size:12px;
+    opacity:.7;
+  }
+  .price.dash{
+    color:var(--muted);
+    opacity:.8;
+  }
+  .price.dash::after{
+    content:"";
+  }
+  .item.soldout .item-name{
+    color:var(--soldout);
+    text-decoration:line-through;
+    text-decoration-color:var(--soldout);
+  }
+  .item.soldout .price{
+    color:var(--soldout);
+    font-size:11px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .item.soldout .price::after{content:"";}
+
+  .divider-flame{
+    text-align:center;
+    color:var(--ember);
+    opacity:.5;
+    font-size:13px;
+    letter-spacing:6px;
+    margin:40px 0 0;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:48px;
+    padding:0 24px;
+  }
+  footer .afiyet{
+    font-family:'Oswald', sans-serif;
+    font-size:22px;
+    letter-spacing:2px;
+    color:var(--glow);
+    text-transform:uppercase;
+    opacity:.9;
+  }
+  footer .note{
+    margin-top:10px;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  @media (min-width:520px){
+    .hero{padding:64px 24px 40px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="chef">🍢</div>
+    <h1>MEŞHUR<br><span>KÖZDÜRÜM</span></h1>
+    <div class="tagline">Odun ateşinde, közde pişer</div>
+    <div class="rule"></div>
+  </div>
+
+  <nav class="catnav">
+    <a href="#corbalar">Çorbalar</a>
+    <a href="#durumler">Dürümler</a>
+    <a href="#porsiyonlar">Porsiyonlar</a>
+    <a href="#tatlilar">Tatlılar</a>
+    <a href="#icecekler">İçecekler</a>
+  </nav>
+
+  <div class="menu">
+
+    <section class="section" id="corbalar">
+      <div class="section-head"><span class="num">01</span><h2>Çorbalar</h2></div>
+      <div class="section-sub">Her sabah taze pişer</div>
+
+      <div class="item">
+        <span class="item-name">Ezogelin</span>
+        <span class="leader"></span>
+        <span class="price">150</span>
+      </div>
+    </section>
+
+    <div class="divider-flame">• • •</div>
+
+    <section class="section" id="durumler">
+      <div class="section-head"><span class="num">02</span><h2>Dürümler</h2></div>
+      <div class="section-sub">İnce lavaşta, közde hazırlanır</div>
+
+      <div class="item">
+        <span class="item-name">Adana Dürüm</span>
+        <span class="leader"></span>
+        <span class="price">300</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Çöp Şiş Dürüm</span>
+        <span class="leader"></span>
+        <span class="price">350</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Tavuk Şiş Dürüm</span>
+        <span class="leader"></span>
+        <span class="price">300</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Köfte Dürüm</span>
+        <span class="leader"></span>
+        <span class="price">300</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Közde Karışık Dürüm</span>
+        <span class="leader"></span>
+        <span class="price">350</span>
+      </div>
+    </section>
+
+    <div class="divider-flame">• • •</div>
+
+    <section class="section" id="porsiyonlar">
+      <div class="section-head"><span class="num">03</span><h2>Porsiyonlar</h2></div>
+      <div class="section-sub">Pilav ve garnitür ile servis edilir</div>
+
+      <div class="item">
+        <span class="item-name">Adana Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">425</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Urfa Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">425</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Tavuk Şiş Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">400</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Çöp Şiş Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">500</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Kanat Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">400</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Köfte Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">425</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Beyti Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">700</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Domatesli Porsiyon</span>
+        <span class="leader"></span>
+        <span class="price">700</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Karışık Izgara</span>
+        <span class="leader"></span>
+        <span class="price">500</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Karışık Kebap<span class="desc">2 kişilik, şefin seçimi</span></span>
+        <span class="leader"></span>
+        <span class="price">1000</span>
+      </div>
+    </section>
+
+    <div class="divider-flame">• • •</div>
+
+    <section class="section" id="tatlilar">
+      <div class="section-head"><span class="num">04</span><h2>Tatlılar</h2></div>
+      <div class="section-sub">Yemeğin ardından, sıcacık</div>
+
+      <div class="item">
+        <span class="item-name">Kemalpaşa</span>
+        <span class="leader"></span>
+        <span class="price">170</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Kadayıf</span>
+        <span class="leader"></span>
+        <span class="price">170</span>
+      </div>
+    </section>
+
+    <div class="divider-flame">• • •</div>
+
+    <section class="section" id="icecekler">
+      <div class="section-head"><span class="num">05</span><h2>İçecekler</h2></div>
+      <div class="section-sub">Soğuk servis edilir</div>
+
+      <div class="item">
+        <span class="item-name">Ayran</span>
+        <span class="leader"></span>
+        <span class="price">70</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Kola</span>
+        <span class="leader"></span>
+        <span class="price">80</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Sprite</span>
+        <span class="leader"></span>
+        <span class="price">80</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Fanta</span>
+        <span class="leader"></span>
+        <span class="price">80</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Şalgam</span>
+        <span class="leader"></span>
+        <span class="price">70</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Meyve Suyu</span>
+        <span class="leader"></span>
+        <span class="price">80</span>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="afiyet">Afiyet Olsun</div>
+    <div class="note">Fiyatlara KDV dahildir · Meşhur Közdürüm</div>
+  </footer>
+
+</body>
+</html>
